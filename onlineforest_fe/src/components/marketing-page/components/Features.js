@@ -15,25 +15,25 @@ import ViewQuiltRoundedIcon from '@mui/icons-material/ViewQuiltRounded';
 const items = [
   {
     icon: <ViewQuiltRoundedIcon />,
-    title: 'Dashboard',
+    title: 'Dashboard Performace',
     description:
-      'This item could provide a snapshot of the most important metrics or data points related to the product.',
+      'Online Forest System could provide a snapshot of the performance of user data to point out solution for improving concentration ability.',
     imageLight: `url("${process.env.TEMPLATE_IMAGE_URL || 'https://mui.com'}/static/images/templates/templates-images/dash-light.png")`,
     imageDark: `url("${process.env.TEMPLATE_IMAGE_URL || 'https://mui.com'}/static/images/templates/templates-images/dash-dark.png")`,
   },
   {
     icon: <EdgesensorHighRoundedIcon />,
-    title: 'Mobile integration',
+    title: 'Visualize Effort By Animation',
     description:
-      'This item could provide information about the mobile app version of the product.',
+      'Online Forest turn your working time to tre animation version so user can see how hard they have cringe.',
     imageLight: `url("${process.env.TEMPLATE_IMAGE_URL || 'https://mui.com'}/static/images/templates/templates-images/mobile-light.png")`,
     imageDark: `url("${process.env.TEMPLATE_IMAGE_URL || 'https://mui.com'}/static/images/templates/templates-images/mobile-dark.png")`,
   },
   {
     icon: <DevicesRoundedIcon />,
-    title: 'Available on all platforms',
+    title: 'Online Connect Your Friends Forest',
     description:
-      'This item could let users know the product is available on all platforms, such as web, mobile, and desktop.',
+      'Online Forest let users connect their Forest together to make a better WebApp user community.',
     imageLight: `url("${process.env.TEMPLATE_IMAGE_URL || 'https://mui.com'}/static/images/templates/templates-images/devices-light.png")`,
     imageDark: `url("${process.env.TEMPLATE_IMAGE_URL || 'https://mui.com'}/static/images/templates/templates-images/devices-dark.png")`,
   },
@@ -158,9 +158,8 @@ export default function Features() {
           variant="body1"
           sx={{ color: 'text.secondary', mb: { xs: 2, sm: 4 } }}
         >
-          Provide a brief overview of the key features of the product. For example,
-          you could list the number of features, their types or benefits, and
-          add-ons.
+          Online effort counter web app by visualizing for encorage working. Beside,
+          analyze performance by time, and online connecting friends
         </Typography>
       </Box>
       <Box
