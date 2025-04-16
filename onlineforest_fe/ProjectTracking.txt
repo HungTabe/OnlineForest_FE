@@ -7,3 +7,33 @@
  - SignIn thì thành công thì vào trang chính [Done] 
  - Còn thất bại thì trả pop [DONE]
 
+ LỖI : ERROR in ./src/components/dashboard/theme/customizations/datePickers.js 4:0-97
+ Module not found: Error: Can't resolve '@mui/x-date-pickers' in 'D:\2025YEAR\Spring25_FPTU\Project_OnlineForest\OnlineForest_FE\onlineforest_fe\src\components\dashboard\theme\customizations'
+ Lỗi này là do chưa install thư viện nhé
+ npm install @mui/x-charts @mui/x-data-grid @mui/x-date-pickers dayjs @react-spring/web
+
+🔍 Giải thích ngắn gọn
+Dự án của bạn đang dùng: react@19.1.0
+Nhưng package @react-spring/web@9.7.5 chỉ hỗ trợ: react@^16.8.0 || ^17.0.0 || ^18.0.0
+Do đó npm không thể giải quyết dependency tree một cách an toàn và báo lỗi ERESOLVE.
+
+✅ Cách khắc phục
+⚙️ Cách 1: Dùng --legacy-peer-deps (Khuyên dùng trong trường hợp này)
+npm install @mui/x-charts @mui/x-data-grid @mui/x-date-pickers dayjs @react-spring/web --legacy-peer-deps
+Cờ --legacy-peer-deps sẽ bỏ qua việc kiểm tra chặt chẽ các dependency "peer", giúp bạn cài được bất chấp cảnh báo.
+
+📍 Nguyên nhân:
+Bạn đang import các module từ thư viện @mui/x-tree-view, nhưng thư viện này chưa được cài trong project của bạn. Do đó Webpack không thể tìm thấy và báo lỗi.
+
+📄 Các module bị thiếu cụ thể:
+
+Module	                                                   Ý nghĩa
+@mui/x-tree-view/RichTreeView	                           Component TreeView nâng cao
+useTreeItem2	                                           Hook để customize từng node trong Tree
+TreeItem2, TreeItem2Icon, TreeItem2Provider	               Các component mở rộng cho TreeItem
+✅ Cách xử lý:
+Cài đặt thư viện @mui/x-tree-view:
+npm install @mui/x-tree-view --legacy-peer-deps
+Dùng thêm --legacy-peer-deps nếu bạn đang dùng React 19 để tránh xung đột giống như lần trước.
+
+
