@@ -16,6 +16,9 @@ import { styled } from '@mui/material/styles';
 import AppTheme from '../shared-theme/AppTheme';
 import ColorModeSelect from '../shared-theme/ColorModeSelect';
 import { GoogleIcon, FacebookIcon, SitemarkIcon } from './components/CustomIcons';
+import axios from 'axios';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: 'flex',
@@ -66,6 +69,20 @@ export default function SignUp(props) {
   const [passwordErrorMessage, setPasswordErrorMessage] = React.useState('');
   const [nameError, setNameError] = React.useState(false);
   const [nameErrorMessage, setNameErrorMessage] = React.useState('');
+  const apiUrl = process.env.REACT_APP_API_URL;
+
+  // Prop for PopUp
+  const [open, setOpen] = React.useState(false);
+  const [alertMessage, setAlertMessage] = React.useState('');
+  const [alertSeverity, setAlertSeverity] = React.useState('success');
+
+  // handleClose of PopUp
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
+  };
 
   const validateInputs = () => {
     const email = document.getElementById('email');
@@ -104,18 +121,32 @@ export default function SignUp(props) {
     return isValid;
   };
 
-  const handleSubmit = (event) => {
-    if (nameError || emailError || passwordError) {
-      event.preventDefault();
-      return;
-    }
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (!validateInputs()) return;
+
     const data = new FormData(event.currentTarget);
-    console.log({
-      name: data.get('name'),
-      lastName: data.get('lastName'),
-      email: data.get('email'),
+    const requestData = {
+      username: data.get('name'),
       password: data.get('password'),
-    });
+      email: data.get('email')
+    };
+
+    try {
+      const response = await axios.post(`${apiUrl}/auth/register`, requestData, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      setAlertMessage('Đăng ký thành công!');
+      setAlertSeverity('success');
+      setOpen(true);
+    } catch (error) {
+      console.error('Đã xảy ra lỗi:', error.response || error.message);
+      setAlertMessage('Đăng ký thất bại. Vui lòng thử lại.');
+      setAlertSeverity('error');
+      setOpen(true);
+    }
   };
 
   return (
@@ -228,6 +259,17 @@ export default function SignUp(props) {
           </Box>
         </Card>
       </SignUpContainer>
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+          <MuiAlert
+            onClose={handleClose}
+            severity={alertSeverity}
+            variant="filled"
+            sx={{ width: '100%' }}
+            elevation={6}
+          >
+            {alertMessage}
+          </MuiAlert>
+      </Snackbar>
     </AppTheme>
   );
 }
