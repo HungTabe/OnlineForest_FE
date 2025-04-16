@@ -19,6 +19,8 @@ import { GoogleIcon, FacebookIcon, SitemarkIcon } from './components/CustomIcons
 import axios from 'axios';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
+import { useNavigate } from 'react-router-dom';
+import { delay } from '../../utils/delay';
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: 'flex',
@@ -70,6 +72,8 @@ export default function SignUp(props) {
   const [nameError, setNameError] = React.useState(false);
   const [nameErrorMessage, setNameErrorMessage] = React.useState('');
   const apiUrl = process.env.REACT_APP_API_URL;
+
+  const navigate = useNavigate();
 
   // Prop for PopUp
   const [open, setOpen] = React.useState(false);
@@ -138,9 +142,12 @@ export default function SignUp(props) {
           'Content-Type': 'application/json',
         },
       });
-      setAlertMessage('Đăng ký thành công!');
+      setAlertMessage('Đăng ký thành công! Redirect to SignIn in 1 second');
       setAlertSeverity('success');
       setOpen(true);
+      await delay(1500);
+      // redirect sang SignIn
+      navigate('/sign-in');
     } catch (error) {
       console.error('Đã xảy ra lỗi:', error.response || error.message);
       setAlertMessage('Đăng ký thất bại. Vui lòng thử lại.');
