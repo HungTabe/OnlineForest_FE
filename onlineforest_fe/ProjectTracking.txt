@@ -4,6 +4,6 @@
  - Đăng kí thành công
  - Báo bằng popup nếu có lỗi thì ở lại trang [DONE]
  - Nếu thành công thì báo bằng popup và bên cạnh đó redirect sang LoginPage [DONE]
- - SignIn thì thành công thì vào trang chính [NotDone]
+ - SignIn thì thành công thì vào trang chính [Done] 
  - Còn thất bại thì trả pop [DONE]
 
