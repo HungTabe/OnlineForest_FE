@@ -6,6 +6,8 @@ import MarketingPage from "./components/marketing-page/MarketingPage"; // Cập 
 import SignUp from "./components/sign-up/SignUp"; // Cập nhật đường dẫn phù hợp
 import SignIn from "./components/sign-in/SignIn"; // Cập nhật đường dẫn phù hợp
 import Dashboard from "./components/dashboard/Dashboard"; // Cập nhật đường dẫn phù hợp
+import PlantingScreen from "./components/plan-tree/PlantingScreen"; // Cập nhật đường dẫn phù hợp
+
 
 
 
@@ -18,6 +20,7 @@ function App() {
       <Route path="/sign-up" element={<SignUp />} />
       <Route path="/sign-in" element={<SignIn />} />
       <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/plantree" element={<PlantingScreen />} />
     </Routes>
   </Router>
   );
