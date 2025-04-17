@@ -12,6 +12,7 @@ import AssignmentRoundedIcon from '@mui/icons-material/AssignmentRounded';
 import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import InfoRoundedIcon from '@mui/icons-material/InfoRounded';
 import HelpRoundedIcon from '@mui/icons-material/HelpRounded';
+import { useNavigate } from 'react-router-dom';
 
 /*
 mainListItems: Là một mảng các mục chính của menu (Home, Analytics, Clients, Tasks). 
@@ -31,6 +32,7 @@ const secondaryListItems = [
 ];
 
 export default function MenuContent() {
+  const navigate = useNavigate(); // dùng để điều hướng
   return (
     // Stack Component: Đây là một container giúp bố trí các phần tử con theo chiều dọc hoặc ngang, 
     // tùy thuộc vào thuộc tính của sx (ở đây là theo chiều dọc với các khoảng cách và phần tử được 
@@ -44,7 +46,13 @@ export default function MenuContent() {
       trong đó có một ListItemIcon (biểu tượng) và ListItemText (văn bản). */}
         {mainListItems.map((item, index) => (
           <ListItem key={index} disablePadding sx={{ display: 'block' }}>
-            <ListItemButton selected={index === 0}>
+            <ListItemButton 
+                selected={index === 0}
+                onClick={() => {
+                  if (item.path) {
+                    navigate(item.path); // Điều hướng nếu có path
+                  }
+                }}>
               <ListItemIcon>{item.icon}</ListItemIcon>
               <ListItemText primary={item.text} />
             </ListItemButton>
