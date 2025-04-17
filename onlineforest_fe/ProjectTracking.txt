@@ -31,9 +31,14 @@ Module	                                                   Ý nghĩa
 @mui/x-tree-view/RichTreeView	                           Component TreeView nâng cao
 useTreeItem2	                                           Hook để customize từng node trong Tree
 TreeItem2, TreeItem2Icon, TreeItem2Provider	               Các component mở rộng cho TreeItem
+
 ✅ Cách xử lý:
 Cài đặt thư viện @mui/x-tree-view:
 npm install @mui/x-tree-view --legacy-peer-deps
 Dùng thêm --legacy-peer-deps nếu bạn đang dùng React 19 để tránh xung đột giống như lần trước.
 
+
+Làm cái màn count Effort và link path vào
+
+Làm đơn giản trước
 

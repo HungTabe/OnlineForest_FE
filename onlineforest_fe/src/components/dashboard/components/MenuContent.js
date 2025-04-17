@@ -13,11 +13,15 @@ import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import InfoRoundedIcon from '@mui/icons-material/InfoRounded';
 import HelpRoundedIcon from '@mui/icons-material/HelpRounded';
 
+/*
+mainListItems: Là một mảng các mục chính của menu (Home, Analytics, Clients, Tasks). 
+Mỗi mục chứa một thuộc tính text (văn bản hiển thị) và icon (biểu tượng đại diện cho mục đó
+*/
 const mainListItems = [
   { text: 'Home', icon: <HomeRoundedIcon /> },
+  { text: 'Count Efforts', icon: <AssignmentRoundedIcon />, path: '/plantree'},
   { text: 'Analytics', icon: <AnalyticsRoundedIcon /> },
   { text: 'Clients', icon: <PeopleRoundedIcon /> },
-  { text: 'Tasks', icon: <AssignmentRoundedIcon /> },
 ];
 
 const secondaryListItems = [
@@ -28,8 +32,16 @@ const secondaryListItems = [
 
 export default function MenuContent() {
   return (
+    // Stack Component: Đây là một container giúp bố trí các phần tử con theo chiều dọc hoặc ngang, 
+    // tùy thuộc vào thuộc tính của sx (ở đây là theo chiều dọc với các khoảng cách và phần tử được 
+    // phân phối đều)./
     <Stack sx={{ flexGrow: 1, p: 1, justifyContent: 'space-between' }}>
+      {/* List Component: Mỗi danh sách (chính và phụ) được tạo ra với List của MUI, với thuộc tính 
+      dense giúp các item trong danh sách có chiều cao nhỏ hơn bình thường, tiết kiệm không gian. */}
       <List dense>
+      {/* Mapping over List Items: Sử dụng .map() để lặp qua mainListItems và secondaryListItems để
+      tạo ra từng ListItem cho mỗi mục trong danh sách. Mỗi ListItem chứa một ListItemButton, bên 
+      trong đó có một ListItemIcon (biểu tượng) và ListItemText (văn bản). */}
         {mainListItems.map((item, index) => (
           <ListItem key={index} disablePadding sx={{ display: 'block' }}>
             <ListItemButton selected={index === 0}>

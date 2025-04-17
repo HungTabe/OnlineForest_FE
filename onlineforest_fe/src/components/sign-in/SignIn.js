@@ -117,7 +117,7 @@ export default function SignIn(props) {
       setOpen(true);
       await delay(1500);
       // redirect sang SignIn
-      navigate("/sign-up");
+      navigate("/dashboard");
     } catch (error) {
       console.error("Đã xảy ra lỗi:", error.response || error.message);
       setAlertMessage(
